@@ -39,4 +39,11 @@ class PagesController extends Controller
             ->with('info', 'you are signed in!');
 
     }
+
+
+    public function getSignout(){
+        Auth::logout();
+        return redirect()->route('pages.welcome');
+
+    }
 }

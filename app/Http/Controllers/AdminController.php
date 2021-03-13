@@ -3,24 +3,29 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         return  view('admin.index');
     }
+   public  function getLogIN(){
+        return view('admin.login');
+   }
+    public  function adminLogIn(Request $request){
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+        if (!Auth::attempt($request->only(['email', 'password']), $request->has('remember'))){
+
+            return redirect()->back()->with('info', 'could not sign you in with those details');
+
+        }
+
+        return redirect()->route('admins.index')
+            ->with('info', 'you are signed in!');
+    }
     public function create()
     {
         //

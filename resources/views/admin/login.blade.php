@@ -2,9 +2,9 @@
 @section('content')
     <div class="container mt-5">
 
-            <form  action="{{route('postlogin')}}" method="post">
-                @csrf
-                <h1 class="text-center mt-5">user login
+        <form  action="{{route('admin.adminLogIn')}}" method="post">
+            @csrf
+            <h1 class="text-center mt-5">admin login
                 <div class="row justify-content-center m-l-5" >
 
                     <div class="col-md-8  mt-5">
@@ -20,6 +20,6 @@
                     </div>
                 </div>
 
-            </form>
+        </form>
     </div>
 @endsection
